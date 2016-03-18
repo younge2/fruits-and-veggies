@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="FandV">
     <head>
         <title>Fruit and Veggies</title>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
@@ -10,19 +10,32 @@
         <script src="js/app.js"></script>
     </head>
     <body>
-        <div class="container">
-            <h1>Fruit and Veggies</h1>
+        <div class="container" ng-controller="ListsCtrl">
+            <h1 id="hi" class="colTitle">Fruit and Veggies</h1>
             <div class="row">
                 <div class="col-sm-4">
-                    col 1
+                <h1 class="colTitle">Fruits</h1>
+                    <div class="well"  ng-repeat="item in fruitArr track by $index"  ng-class="{'is-wrong':  fin &&  !findFruit($index) }"> {{item}}
+                        <button ng-click="fruToPool($index)" class = "btn btn-xs btn-primary">-></button>
+                    </div>
+                </div>
+                <div class="col-sm-4"> 
+                <h1 class="colTitle">Pool {{fin}}</h1> 
+                <div class="mes is-right" ng-show="fin && checkCorrect()">WINNING!!!!!</div>  
+                <div class="mes is-wrong" ng-show="fin && !checkCorrect()">EPIC FAIL!!!!!</div>                
+                    <div class="well" ng-repeat="item in poolArr track by $index"><button ng-click="moveToFruit($index)" class = "btn btn-xs btn-primary"><-</button> {{item}}
+                        <button ng-click="moveToVegetable($index)" class = "btn btn-xs btn-primary">-></button>
+                    </div>
                 </div>
                 <div class="col-sm-4">
-                    col 2
-                </div>
-                <div class="col-sm-4">
-                    col 3
+                <h1 class="colTitle">Vegetables</h1>
+                    <div class="well" ng-class="{'is-wrong': fin && !findVeg($index) }" ng-repeat="item in vegArr track by $index"><button ng-click="vegToPool($index)" class = "btn btn-xs btn-primary"><-</button> {{item}}
+                    </div>
                 </div>                        
             </div>
         </div>
+
+
+      
     </body>
 </html>

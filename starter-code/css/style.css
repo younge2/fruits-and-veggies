@@ -1,1 +1,23 @@
 /* file for your css */
+
+
+
+.colTitle {
+	text-align: center;
+}
+.well {
+	display: flex;
+	justify-content: space-between;
+}
+
+.is-wrong {
+	background-color: salmon;
+}
+
+.is-right {
+	background-color: #58FA58;
+}
+
+.mes {
+	text-align: center;
+}
